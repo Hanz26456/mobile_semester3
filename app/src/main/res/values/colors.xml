@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="lavender">#8692F7</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <color name="custom_blue">#03346E</color>
+
+
+
+    <color name="home">#1194AA</color>
+    <color name="Profil">#C93790</color>
+    <color name="Keranjang">#AE7E0F</color>
+    <color name="Setting">#5B37B7</color>
+
+    <color name="home_20">#331194AA</color>
+    <color name="Profi_20">#33C9379D</color>
+    <color name="Keranjang_20">#33AE7E0F</color>
+    <color name="Setting_20">#335B37B7</color>
+</resources>
