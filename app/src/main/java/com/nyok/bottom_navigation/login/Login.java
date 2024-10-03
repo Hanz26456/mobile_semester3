@@ -34,21 +34,32 @@ public class Login extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-         Username = findViewById(R.id.username);
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+
+        // Cek apakah user sudah login sebelumnya
+        boolean sudahMasuk = sharedPreferences.getBoolean("masuk", false);
+        if (sudahMasuk) {
+            // Jika sudah login, langsung ke MainActivity
+            Intent intent = new Intent(Login.this, MainActivity.class);
+            startActivity(intent);
+            finish();  // Mengakhiri activity login
+            return;
+        }
+
+        // Inisialisasi view jika belum login
+        Username = findViewById(R.id.username);
         Password = findViewById(R.id.passwordedittext);
         btnlogin = findViewById(R.id.btnlogin);
         btn_edittext = findViewById(R.id.textView7);
 
-btn_edittext.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-       Register.newInstance().show(getSupportFragmentManager(), Register.TAG);
-    }
-});
- db = new DatabaseHelperLogin(this);
+        db = new DatabaseHelperLogin(this);
 
- sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-
+        btn_edittext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Register.newInstance().show(getSupportFragmentManager(), Register.TAG);
+            }
+        });
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,16 +67,15 @@ btn_edittext.setOnClickListener(new View.OnClickListener() {
                 String getUsername = Username.getText().toString();
                 String getPassword = Password.getText().toString();
 
-                if (getUsername.isEmpty() || getPassword.isEmpty()) {  // Cek jika salah satu field kosong
+                if (getUsername.isEmpty() || getPassword.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Username atau password tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Boolean masuk = db.checkLogin(getUsername, getPassword);  // Perbaikan di sini
-                    if (masuk == true) {
+                    Boolean masuk = db.checkLogin(getUsername, getPassword);
+                    if (masuk) {
                         Boolean updateSession = db.upgradeSession("ada", 1);
-                        if (updateSession == true) {
+                        if (updateSession) {
                             Toast.makeText(getApplicationContext(), "Berhasil Masuk", Toast.LENGTH_SHORT).show();
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-
                             editor.putBoolean("masuk", true);
                             editor.apply();
 
