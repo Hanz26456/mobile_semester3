@@ -18,6 +18,6 @@ public class KeranjangFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_keranjang, container, false);
         //LASJsjJSKLasjlkJprivtae
         //fdytfyufyfyuffyuyfy
-        //vevek
+        //vevekk
     }
 }
