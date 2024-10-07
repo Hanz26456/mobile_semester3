@@ -4,17 +4,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.nyok.bottom_navigation.adapter.PopularAdapter;
 import com.nyok.bottom_navigation.database.DatabaseHelperLogin;
+import com.nyok.bottom_navigation.databinding.FragmentHomefragmenBinding;
+import com.nyok.bottom_navigation.domain.PopularDomain;
 import com.nyok.bottom_navigation.login.Login;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment {
-    private Button btnkeluar;
+
+    private FragmentHomefragmenBinding binding;  // Binding untuk fragment_homefragmen.xml
     private DatabaseHelperLogin db;
     public static final String SHARED_PREF_NAME = "myPref";
     private SharedPreferences sharedPreferences;
@@ -22,11 +29,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_homefragmen, container, false);
+        // Inflate layout untuk fragment dengan View Binding
+        binding = FragmentHomefragmenBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        // Menghubungkan btnkeluar dengan layout
-        btnkeluar = view.findViewById(R.id.btn_logout);
+        // Inisialisasi RecyclerView
+        initRecyclerView();
 
         // Inisialisasi DatabaseHelperLogin
         db = new DatabaseHelperLogin(getActivity());
@@ -43,24 +51,17 @@ public class HomeFragment extends Fragment {
             getActivity().finish();  // Gunakan getActivity().finish() untuk menutup Activity
         }
 
-        btnkeluar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Boolean updateSession = db.upgradeSession("Kosong", 1);
-                if (updateSession) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Berhasil Keluar", Toast.LENGTH_SHORT).show();
-
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("masuk", false);
-                    editor.apply();
-
-                    Intent keluar = new Intent(getActivity(), Login.class);
-                    startActivity(keluar);
-                    getActivity().finish();  // Gunakan getActivity().finish() untuk menutup Activity
-                }
-            }
-        });
-
         return view;
+    }
+
+    private void initRecyclerView() {
+        ArrayList<PopularDomain> items = new ArrayList<>();
+        items.add(new PopularDomain("Brown Sugar", "brown_sugar", 15, 4, 500, "Deskripsi item 1"));
+        items.add(new PopularDomain("White Leopard", "white_leopard", 10, 4.5, 450, "Deskripsi item 2"));
+        items.add(new PopularDomain("Tre Smaker Glass", "tre_smaker_glass", 3, 4.9, 800, "Deskripsi item 3"));
+
+        // Mengatur LayoutManager dan Adapter untuk RecyclerView
+        binding.PopularView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.PopularView.setAdapter(new PopularAdapter(items));
     }
 }
