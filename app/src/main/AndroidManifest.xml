@@ -49,9 +49,9 @@
         <!-- Aktivitas MainActivity -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-
-        <!-- Splashscreen sebagai aktivitas utama dengan intent filter -->
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity
             android:name=".login.Splashscreen"
             android:exported="true">
