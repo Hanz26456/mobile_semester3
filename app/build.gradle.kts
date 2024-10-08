@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     // Perbaiki penulisan berikut dengan tanda petik ganda
+    implementation ("com.github.dhaval2404:imagepicker:2.1")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 }
