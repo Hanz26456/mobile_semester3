@@ -47,8 +47,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    // Perbaiki penulisan berikut dengan tanda petik ganda
+//    implementasion custom
+    implementation ("com.google.code.gson:gson:2.10")
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")

@@ -3,12 +3,15 @@ package com.nyok.bottom_navigation;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.nyok.bottom_navigation.adapter.PopularAdapter;
@@ -34,6 +37,7 @@ public class HomeFragment extends Fragment {
         View view = binding.getRoot();
 
         // Inisialisasi RecyclerView
+        statusBarColor();  // Panggil metode statusBarColor
         initRecyclerView();
 
         // Inisialisasi DatabaseHelperLogin
@@ -48,10 +52,20 @@ public class HomeFragment extends Fragment {
             // Jika sesi tidak ada, pindah ke LoginActivity
             Intent login = new Intent(getActivity(), Login.class);
             startActivity(login);
-            getActivity().finish();  // Gunakan getActivity().finish() untuk menutup Activity
+            if (getActivity() != null) {
+                getActivity().finish();  // Gunakan getActivity().finish() untuk menutup Activity
+            }
         }
 
         return view;
+    }
+
+    private void statusBarColor() {
+        // Pastikan bahwa getActivity() tidak null
+        if (getActivity() != null) {
+            Window window = getActivity().getWindow();
+            window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.custom_blue));
+        }
     }
 
     private void initRecyclerView() {

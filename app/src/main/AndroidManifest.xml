@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permission untuk akses penyimpanan dan kamera -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -16,51 +15,43 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Bottom_navigation"
-        android:requestLegacyExternalStorage="true">
+        android:theme="@style/Theme.Bottom_navigation">
 
+        <activity
+            android:name=".menu_dalam.DetailActivity"
+            android:exported="false" />
         <!-- Aktivitas register -->
         <activity
             android:name=".login.Register"
-            android:exported="false" />
-
-        <!-- Aktivitas login -->
+            android:exported="false" /> <!-- Aktivitas login -->
         <activity
             android:name=".login.Login"
-            android:exported="false" />
-
-        <!-- Aktivitas Landing3 -->
+            android:exported="false" /> <!-- Aktivitas Landing3 -->
         <activity
             android:name=".login.Landing3"
-            android:exported="false" />
-
-        <!-- Aktivitas Landing2 -->
+            android:exported="false" /> <!-- Aktivitas Landing2 -->
         <activity
             android:name=".login.Landing2"
-            android:exported="false" />
-
-        <!-- Aktivitas Landing1 -->
+            android:exported="false" /> <!-- Aktivitas Landing1 -->
         <activity
             android:name=".login.Landing1"
-            android:exported="false" />
-
-        <!-- Aktivitas MainActivity -->
+            android:exported="false" /> <!-- Aktivitas MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"
-            />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".login.Splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

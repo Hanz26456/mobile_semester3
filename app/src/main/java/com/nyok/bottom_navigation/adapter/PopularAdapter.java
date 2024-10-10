@@ -1,6 +1,7 @@
 package com.nyok.bottom_navigation.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.nyok.bottom_navigation.databinding.ViewholderPupListBinding;
 import com.nyok.bottom_navigation.domain.PopularDomain;
+import com.nyok.bottom_navigation.menu_dalam.DetailActivity;
 
 import java.util.ArrayList;
 
@@ -45,11 +47,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.Viewhold
                 .transform(new GranularRoundedCorners(30, 30, 0, 0))
                 .into(holder.binding.pic);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.itemView.setOnClickListener(v ->  {
                 // Aksi ketika item di klik
-            }
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("object", items.get(position)); // Ini mengirimkan object PopularDomain
+            context.startActivity(intent);
+
+
         });
     }
 
