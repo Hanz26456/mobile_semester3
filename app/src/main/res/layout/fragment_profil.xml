@@ -7,40 +7,7 @@
     android:background="@color/white"
     tools:context=".ProfilFragment">
 
-    <!-- Gambar profil dengan bentuk lingkaran -->
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageprof"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_margin="50dp"
-        android:background="@color/custom_blue"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circular"
-        app:srcCompat="@drawable/person_24"
-        app:strokeColor="@color/white"
-        app:strokeWidth="5dp" />
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:tint="@color/white"
-        android:backgroundTint="#000080"
-        android:clickable="true"
-        android:src="@drawable/camera_24"
-        app:layout_constraintBottom_toBottomOf="@+id/imageprof"
-        app:layout_constraintEnd_toEndOf="@+id/imageprof"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:contentDescription="TODO"/>
-
-    <!-- Tombol floating action untuk mengubah gambar -->
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="60dp"

@@ -1,18 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background"
+    android:padding="16dp"
     tools:context=".SettingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="setting banget"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/black"/>
+    <!-- Profile Image -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_profil"
+        android:layout_width="168dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="50dp"
+        android:padding="5dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/person_24"
+        app:strokeColor="@color/white"
+        app:strokeWidth="5dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialComponents.Circle" /> <!-- Circular Shape -->
 
-</FrameLayout>
+    <!-- Floating Action Button to Change Profile Image -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#000080"
+        android:clickable="true"
+        android:contentDescription="Change Profile Picture"
+        android:src="@drawable/camera_24"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/image_profil"
+        app:layout_constraintEnd_toEndOf="@+id/image_profil" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ahmad Alfahrezi"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/image_profil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ahmadalfahrezi@gmail.com"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/profile_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"/>
+
+    <!-- View Active Transactions Button -->
+    <Button
+        android:id="@+id/active_transactions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="View 4 Active Transactions"
+        app:layout_constraintTop_toBottomOf="@id/profile_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"/>
+
+    <!-- Edit Profile -->
+    <TextView
+        android:id="@+id/edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:drawableStart="@drawable/arrow_detail"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/active_transactions"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"/>
+
+    <!-- Discount Voucher -->
+    <TextView
+        android:id="@+id/discount_voucher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discount Voucher"
+        android:drawableStart="@drawable/bookmart"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/edit_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"/>
+
+    <!-- Support -->
+    <TextView
+        android:id="@+id/support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Support"
+        android:drawableStart="@drawable/ic_user"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/discount_voucher"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"/>
+
+    <!-- Settings -->
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:drawableStart="@drawable/ic_gembok"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/support"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"/>
+
+    <!-- Log Out -->
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:textColor="@android:color/holo_red_dark"
+        android:drawableStart="@drawable/logout"
+        android:drawablePadding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/settings"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="8dp"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
