@@ -1,47 +1,44 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:background="@color/lavender"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/lavender"
+    android:fitsSystemWindows="true"
+    tools:context=".menu_dalam.MainActivity">
 
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" >
+
+    </FrameLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomAppbar"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="0dp"
         android:background="@color/white"
         app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="50dp"
-        android:layout_marginBottom="0dp"> <!-- Pastikan tidak ada margin bottom -->
+        app:fabCradleRoundedCornerRadius="50dp">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginEnd="20dp"
-            app:labelVisibilityMode="labeled"
-            android:background="@color/white"
-            app:menu="@menu/menu_bottom"/>
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:backgroundTint="@color/teal_700"-->
-<!--        android:src="@drawable/iconkeranjang"-->
-<!--        app:layout_anchor="@id/bottomAppbar"-->
-<!--        app:maxImageSize="35dp"-->
-<!--        android:tint="@color/lavender"-->
-<!--        android:layout_gravity="center|bottom" />-->
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/meowbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@+id/bottomAppbar"
+        app:layout_anchorGravity="center"
+        app:mbn_backgroundBottomColor="@color/custom_blue"
+        app:mbn_circleColor="@color/white"
+        app:mbn_countBackgroundColor="#ff6f00"
+        app:mbn_countTextColor="@color/white"
+        app:mbn_defaultIconColor="@color/white"
+        app:mbn_selectedIconColor="#3c415e" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.nyok.bottom_navigation;
+package com.nyok.bottom_navigation.menu_dalam;
 
 import android.Manifest;
 import android.content.Context;

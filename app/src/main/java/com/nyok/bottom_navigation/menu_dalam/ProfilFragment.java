@@ -1,4 +1,4 @@
-package com.nyok.bottom_navigation;
+package com.nyok.bottom_navigation.menu_dalam;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.nyok.bottom_navigation.R;
 import com.nyok.bottom_navigation.database.DatabaseHelperLogin;
 import com.nyok.bottom_navigation.databinding.FragmentProfilBinding;
 import com.nyok.bottom_navigation.login.Login;

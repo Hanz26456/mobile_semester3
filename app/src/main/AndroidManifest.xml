@@ -19,11 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bottom_navigation">
-
+        <activity
+            android:name=".menu_dalam.detail_activity"
+            android:exported="false" />
         <activity
             android:name=".menu_dalam.DetailActivity"
-            android:exported="false" />
-        <!-- Aktivitas register -->
+            android:exported="false" /> <!-- Aktivitas register -->
         <activity
             android:name=".login.Register"
             android:exported="false" /> <!-- Aktivitas login -->
@@ -40,7 +41,7 @@
             android:name=".login.Landing1"
             android:exported="false" /> <!-- Aktivitas MainActivity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".menu_dalam.MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity

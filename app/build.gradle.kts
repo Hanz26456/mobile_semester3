@@ -1,5 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt") // Pastikan ini ada
 }
 
 android {
@@ -25,33 +27,39 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    android {
 
-        buildFeatures {
-            viewBinding = true
-        }
+    kotlinOptions {
+        jvmTarget = "1.8" // Disamakan dengan Java 1.8
     }
 
-
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation(libs.activity)
-    implementation(libs.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-//    implementasion custom
-    implementation ("com.google.code.gson:gson:2.10")
-    implementation ("com.github.dhaval2404:imagepicker:2.1")
+
+    // Testing dependencies
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    // Custom implementations
+    implementation("com.google.code.gson:gson:2.10")
+    implementation("com.github.dhaval2404:imagepicker:2.1")
     implementation("com.github.bumptech.glide:glide:4.15.1")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+    kapt("com.github.bumptech.glide:compiler:4.15.1") // Pastikan ini benar
+    implementation("com.tbuonomo:dotsindicator:4.3")
+    implementation ("com.github.oneHamidreza:MeowBottomNavigationJava:17497600f2")
 }
-
-

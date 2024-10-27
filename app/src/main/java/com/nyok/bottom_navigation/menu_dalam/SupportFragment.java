@@ -1,4 +1,4 @@
-package com.nyok.bottom_navigation;
+package com.nyok.bottom_navigation.menu_dalam;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nyok.bottom_navigation.R;
 
 
 public class SupportFragment extends Fragment {

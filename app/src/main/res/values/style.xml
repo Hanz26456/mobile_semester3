@@ -15,7 +15,10 @@
     </style>
     <style name="ShapeAppearanceOverlay.MaterialComponents.Circle" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item> <!-- Membuat gambar menjadi lingkaran -->
-    </style>
+        <item name="cornerSize">50%</item>
 
+    </style>
+    <style name="circular">
+        <!-- Definisikan properti di sini -->
+    </style>
 </resources>
