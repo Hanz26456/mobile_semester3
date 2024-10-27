@@ -1,6 +1,5 @@
 package com.nyok.bottom_navigation.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -33,7 +32,10 @@ class SelectModelAdapter(
             if (isSelected) R.drawable.custom_btn_blue else R.drawable.grey_background
         )
         holder.binding.modelTxt.setTextColor(
-            ContextCompat.getColor(holder.itemView.context, if (isSelected) R.color.custom_blue else R.color.black)
+            ContextCompat.getColor(
+                holder.itemView.context,
+                if (isSelected) R.color.white else R.color.black // Ubah warna teks saat terpilih menjadi putih
+            )
         )
 
         holder.binding.root.setOnClickListener {

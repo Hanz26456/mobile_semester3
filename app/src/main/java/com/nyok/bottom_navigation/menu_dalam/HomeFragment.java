@@ -102,6 +102,9 @@ public class HomeFragment extends Fragment {
         recomendationRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recomendationRecyclerView.setAdapter(recomendationAdapter);
 
+        // Menampilkan ProgressBar rekomendasi saat data sedang dimuat
+        recomendationProgressBar.setVisibility(View.VISIBLE);
+
         // Memuat rekomendasi
         mainViewModel.loadRecomendation(); // Panggil untuk memuat data rekomendasi
         mainViewModel.getRecomendation().observe(getViewLifecycleOwner(), recomendations -> {
@@ -109,15 +112,20 @@ public class HomeFragment extends Fragment {
                 recomendationAdapter.getItems().clear();
                 recomendationAdapter.getItems().addAll(recomendations);
                 recomendationAdapter.notifyDataSetChanged();
-                recomendationRecyclerView.setVisibility(View.VISIBLE);
+
+                // Sembunyikan ProgressBar setelah rekomendasi berhasil dimuat, dengan delay 1 detik
+                new Handler().postDelayed(() -> {
+                    recomendationProgressBar.setVisibility(View.GONE);
+                    recomendationRecyclerView.setVisibility(View.VISIBLE);
+                }, 1000);
             } else {
                 recomendationRecyclerView.setVisibility(View.GONE);
+                recomendationProgressBar.setVisibility(View.GONE);
             }
         });
 
         return view;
     }
-
 
     private void statusBarColor() {
         if (getActivity() != null) {
