@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomefragmenBinding binding; // Binding untuk fragment_homefragmen.xml
+    private FragmentHomefragmenBinding binding;
     private DatabaseHelperLogin db;
     public static final String SHARED_PREF_NAME = "myPref";
     private SharedPreferences sharedPreferences;
@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     private ViewPager2 viewPager2;
     private SlideAdapter slideAdapter;
     private MainViewModel mainViewModel;
-    private ProgressBar progressBar, categoryProgressBar, recomendationProgressBar; // Tambahkan ProgressBar untuk rekomendasi
+    private ProgressBar progressBar, categoryProgressBar, recomendationProgressBar;
     private RecyclerView categoryRecyclerView, recomendationRecyclerView;
     private CategoryAdapter categoryAdapter;
     private RecomendationAdapter recomendationAdapter;
@@ -48,37 +48,38 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate layout untuk fragment dengan View Binding
         binding = FragmentHomefragmenBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         viewPager2 = binding.viewPager2;
         progressBar = binding.progressbarslider;
         categoryProgressBar = binding.progressBarcategory;
-        recomendationProgressBar = binding.progressrecomendation; // Inisialisasi ProgressBar untuk rekomendasi
+        recomendationProgressBar = binding.progressrecomendation;
         categoryRecyclerView = binding.viewcategory;
         recomendationRecyclerView = binding.viewrecomendation;
 
-        // Inisialisasi MainViewModel
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        mainViewModel.loadBanners(); // Memuat banner
+        mainViewModel.loadBanners();
 
-        // Tampilkan ProgressBar saat memuat banner
+        // Tampilkan ProgressBar untuk slider/banner
         progressBar.setVisibility(View.VISIBLE);
 
-        // Mengatur adapter untuk banner
+        // Mengatur adapter untuk banner dan sinkronisasi DotsIndicator
         mainViewModel.getBanners().observe(getViewLifecycleOwner(), sliderModels -> {
-            if (sliderModels != null) {
+            if (sliderModels != null && !sliderModels.isEmpty()) {
                 slideAdapter = new SlideAdapter(sliderModels, viewPager2);
                 viewPager2.setAdapter(slideAdapter);
+
+                // Sinkronkan DotsIndicator dengan ViewPager2
                 binding.dotIndicator.setVisibility(View.VISIBLE);
+                binding.dotIndicator.setViewPager2(viewPager2);
             }
 
             // Sembunyikan ProgressBar banner setelah delay 1 detik
             new Handler().postDelayed(() -> progressBar.setVisibility(View.GONE), 1000);
         });
 
-        // Menampilkan ProgressBar kategori saat data kategori sedang dimuat
+        // Menampilkan ProgressBar kategori saat data sedang dimuat
         categoryProgressBar.setVisibility(View.VISIBLE);
 
         // Mengatur adapter untuk kategori
@@ -98,7 +99,7 @@ public class HomeFragment extends Fragment {
         });
 
         // Inisialisasi dan memuat rekomendasi
-        recomendationAdapter = new RecomendationAdapter(new ArrayList<>()); // Initial empty list
+        recomendationAdapter = new RecomendationAdapter(new ArrayList<>());
         recomendationRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recomendationRecyclerView.setAdapter(recomendationAdapter);
 
@@ -106,14 +107,14 @@ public class HomeFragment extends Fragment {
         recomendationProgressBar.setVisibility(View.VISIBLE);
 
         // Memuat rekomendasi
-        mainViewModel.loadRecomendation(); // Panggil untuk memuat data rekomendasi
+        mainViewModel.loadRecomendation();
         mainViewModel.getRecomendation().observe(getViewLifecycleOwner(), recomendations -> {
             if (recomendations != null && !recomendations.isEmpty()) {
                 recomendationAdapter.getItems().clear();
                 recomendationAdapter.getItems().addAll(recomendations);
                 recomendationAdapter.notifyDataSetChanged();
 
-                // Sembunyikan ProgressBar setelah rekomendasi berhasil dimuat, dengan delay 1 detik
+                // Sembunyikan ProgressBar setelah rekomendasi berhasil dimuat
                 new Handler().postDelayed(() -> {
                     recomendationProgressBar.setVisibility(View.GONE);
                     recomendationRecyclerView.setVisibility(View.VISIBLE);
