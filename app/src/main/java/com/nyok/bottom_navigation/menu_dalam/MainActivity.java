@@ -1,5 +1,6 @@
 package com.nyok.bottom_navigation.menu_dalam;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.nyok.bottom_navigation.menu_dalam.CartActicity;
 
 import com.nyok.bottom_navigation.R;
 import com.nyok.bottom_navigation.databinding.ActivityMainBinding;
@@ -27,43 +29,36 @@ public class MainActivity extends AppCompatActivity {
 
         meowBottomNavigation = findViewById(R.id.meowbottom);
 
-
         meowBottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.iconhome));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.iconuser));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.iconkeranjang));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.support));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.iconsetting));
 
-
         meowBottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
             @Override
             public void onShowItem(MeowBottomNavigation.Model item) {
-                Fragment fragment = null;
-
-
                 switch (item.getId()) {
                     case 1:
-                        fragment = new HomeFragment();
+                        loadFragment(new HomeFragment());
                         fragmentName = "HOME";
                         break;
                     case 2:
-                        fragment = new ProfilFragment();
+                        loadFragment(new ProfilFragment());
                         fragmentName = "PROFIL";
                         break;
                     case 3:
-                        fragment = new KeranjangFragment();
-                        fragmentName = "KERANJANG";
+                        startActivity(new Intent(MainActivity.this, CartActicity.class));
                         break;
                     case 4:
-                        fragment = new SupportFragment();
+                        loadFragment(new SupportFragment());
                         fragmentName = "SUPPORT";
                         break;
                     case 5:
-                        fragment = new SettingFragment();
+                        loadFragment(new SettingFragment());
                         fragmentName = "SETTING";
                         break;
                 }
-                loadFragment(fragment);
             }
         });
 
@@ -74,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void loadFragment(Fragment fragment){
+
+    private void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
     }
 }

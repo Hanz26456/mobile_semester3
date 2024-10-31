@@ -59,7 +59,7 @@ class MainViewModel : ViewModel() {
             rating = 4.5,
             numberInCart = 1,
             showRecommended = false,
-            categoryId = 1
+            categoryId = "ngetes1"
         ))
 
         recommendationModels.add(ItemsModel(
@@ -70,7 +70,7 @@ class MainViewModel : ViewModel() {
             rating = 4.0,
             numberInCart = 2,
             showRecommended = false,
-            categoryId = 2
+            categoryId = "ngetes2"
         ))
 
         recommendationModels.add(ItemsModel(
@@ -81,7 +81,7 @@ class MainViewModel : ViewModel() {
             rating = 4.0,
             numberInCart = 2,
             showRecommended = false,
-            categoryId = 2
+            categoryId = "ngetes3"
         ))
 
         recommendationModels.add(ItemsModel(
@@ -92,7 +92,56 @@ class MainViewModel : ViewModel() {
             rating = 4.0,
             numberInCart = 2,
             showRecommended = false,
-            categoryId = 2
+            categoryId = "ngetes4"
+        ))
+        _recomendation.value = recommendationModels
+    }
+
+    fun loadFiltered(id: String) {
+        val recommendationModels: MutableList<ItemsModel> = ArrayList()
+
+        recommendationModels.add(ItemsModel(
+            title = "Makanan",
+            description = "Deskripsi 1",
+            drawableId = R.drawable.cat2_1, // Ganti dengan ID drawable yang sesuai
+            price = 20.0,
+            rating = 4.5,
+            numberInCart = 1,
+            showRecommended = false,
+            categoryId = "farhan"
+        ))
+
+        recommendationModels.add(ItemsModel(
+            title = "Minuman",
+            description = "Deskripsi 2",
+            drawableId = R.drawable.cat4_1, // Ganti dengan ID drawable yang sesuai
+            price = 30.0,
+            rating = 4.0,
+            numberInCart = 2,
+            showRecommended = false,
+            categoryId = "tes"
+        ))
+
+        recommendationModels.add(ItemsModel(
+            title = "Apa ini",
+            description = "Deskripsi 3",
+            drawableId = R.drawable.cat3_1, // Ganti dengan ID drawable yang sesuai
+            price = 30.0,
+            rating = 4.0,
+            numberInCart = 2,
+            showRecommended = false,
+            categoryId = "ngetes masih"
+        ))
+
+        recommendationModels.add(ItemsModel(
+            title = "Apa sayang",
+            description = "Deskripsi 4",
+            drawableId = R.drawable.cat1_1, // Ganti dengan ID drawable yang sesuai
+            price = 30.0,
+            rating = 4.0,
+            numberInCart = 2,
+            showRecommended = false,
+            categoryId = "masih"
         ))
         _recomendation.value = recommendationModels
     }

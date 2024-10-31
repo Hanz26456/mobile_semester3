@@ -5,4 +5,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="recomendation">Recomendation</string>
     <string name="see_all">See all</string>
+    <string name="my_cart">My Cart</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="free_delivery">Free Delivery</string>
+    <string name="total_tax">Total Tax</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="pay_cash_when_the_medicine_arrives_the_destination">Pay Cash when the medicine arrives the destination</string>
 </resources>
