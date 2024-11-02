@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.nyok.bottom_navigation.menu_dalam.CartActicity;
-
 import com.nyok.bottom_navigation.R;
 import com.nyok.bottom_navigation.databinding.ActivityMainBinding;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -49,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         fragmentName = "PROFIL";
                         break;
                     case 3:
-                        startActivity(new Intent(MainActivity.this, CartActicity.class));
+                       loadFragment(new KeranjangFragment());
+                       fragmentName = "KERANJANG";
                         break;
                     case 4:
                         loadFragment(new SupportFragment());
