@@ -11,4 +11,5 @@
     <string name="total_tax">Total Tax</string>
     <string name="payment_method">Payment Method</string>
     <string name="pay_cash_when_the_medicine_arrives_the_destination">Pay Cash when the medicine arrives the destination</string>
+    <string name="bayar_cash">Bayar Cash</string>
 </resources>

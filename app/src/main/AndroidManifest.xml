@@ -19,17 +19,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bottom_navigation">
-        <activity android:name=".menu_dalam.CartActicity"
-            android:exported="false"/>
+        <activity android:name=".menu_dalam.Notification_Activity"
+                    android:exported="false"/>
         <activity
             android:name=".menu_dalam.ListItemsActivity2"
             android:exported="false" />
         <activity
             android:name=".menu_dalam.detail_activity"
             android:exported="false" />
-        <activity
-            android:name=".menu_dalam.DetailActivity"
-            android:exported="false" /> <!-- Aktivitas register -->
         <activity
             android:name=".login.Register"
             android:exported="false" /> <!-- Aktivitas login -->

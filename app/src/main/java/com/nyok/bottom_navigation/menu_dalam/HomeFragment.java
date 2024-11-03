@@ -17,7 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import com.nyok.bottom_navigation.R;
 import com.nyok.bottom_navigation.adapter.CategoryAdapter;
@@ -44,6 +48,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView categoryRecyclerView, recomendationRecyclerView;
     private CategoryAdapter categoryAdapter;
     private RecomendationAdapter recomendationAdapter;
+    private EditText searchEditText; // Tambahkan referensi EditText
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +62,7 @@ public class HomeFragment extends Fragment {
         recomendationProgressBar = binding.progressrecomendation;
         categoryRecyclerView = binding.viewcategory;
         recomendationRecyclerView = binding.viewrecomendation;
+        searchEditText = binding.searchEditText; // Inisialisasi EditText
 
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         mainViewModel.loadBanners();
@@ -122,6 +128,42 @@ public class HomeFragment extends Fragment {
             } else {
                 recomendationRecyclerView.setVisibility(View.GONE);
                 recomendationProgressBar.setVisibility(View.GONE);
+            }
+        });
+        ImageView btnNotifikasi = binding.btnnotifikasi; // Ganti dengan ID yang sesuai
+        btnNotifikasi.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Notification_Activity.class);
+            startActivity(intent);
+        });
+        // Menangani klik pada ikon pencarian
+        ImageView btnSearch = binding.btnsearch;
+        btnSearch.setOnClickListener(v -> {
+            if (searchEditText.getVisibility() == View.GONE) {
+                searchEditText.setVisibility(View.VISIBLE);
+                searchEditText.requestFocus(); // Minta fokus untuk input
+            } else {
+                searchEditText.setVisibility(View.GONE);
+            }
+        });
+
+        // Tambahkan TextWatcher untuk menangani input pencarian
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Tidak ada yang perlu dilakukan di sini
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Lakukan pencarian berdasarkan teks yang dimasukkan
+                String query = s.toString().toLowerCase();
+                categoryAdapter.filter(query); // Implementasikan filter di adapter Anda
+                recomendationAdapter.filter(query); // Implementasikan filter di adapter Anda
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Tidak ada yang perlu dilakukan di sini
             }
         });
 

@@ -219,7 +219,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textColor="@color/white"
-                        android:text="@string/pay_cash_when_the_medicine_arrives_the_destination"
+                        android:text="@string/bayar_cash"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -243,7 +243,7 @@
                             android:id="@+id/method_ic_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/bank" />
+                            android:src="@drawable/wallet" />
 
                         <TextView
                             android:id="@+id/method2_title2"
@@ -261,7 +261,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Bayar menggunakan Qris"
+                        android:text="Bayar Qris"
                         android:textSize="10sp" />
 
                 </LinearLayout>

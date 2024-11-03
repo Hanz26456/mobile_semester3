@@ -14,6 +14,8 @@ import com.nyok.bottom_navigation.model.ItemsModel
 
 class RecomendationAdapter(private var items: MutableList<ItemsModel>) : RecyclerView.Adapter<RecomendationAdapter.Viewholder>() {
 
+    private var allItems: List<ItemsModel> = items.toList() // Menyimpan semua item
+
     class Viewholder(val binding: ViewHolderrecomendationBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
@@ -36,9 +38,8 @@ class RecomendationAdapter(private var items: MutableList<ItemsModel>) : Recycle
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true)
                     .into(pic)
-
             } else {
-                pic.setImageResource(R.drawable.cat2_1) // Gambar placeholder jika drawableId tidak valid
+                pic.setImageResource(R.drawable.cat2_1) // Gambar placeholder
             }
 
             root.setOnClickListener {
@@ -52,6 +53,19 @@ class RecomendationAdapter(private var items: MutableList<ItemsModel>) : Recycle
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun filter(query: String) {
+        val filteredList = if (query.isEmpty()) {
+            allItems // Kembalikan semua item jika tidak ada query
+        } else {
+            allItems.filter { item ->
+                item.title.lowercase().contains(query.lowercase()) // Saring berdasarkan judul
+            }
+        }
+        items.clear()
+        items.addAll(filteredList)
+        notifyDataSetChanged() // Memperbarui tampilan RecyclerView
+    }
 
     // Tambahkan metode ini untuk mendapatkan daftar items
     fun getItems(): MutableList<ItemsModel> {

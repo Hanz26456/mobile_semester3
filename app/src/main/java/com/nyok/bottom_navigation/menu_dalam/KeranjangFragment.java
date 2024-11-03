@@ -60,29 +60,58 @@ public class KeranjangFragment extends Fragment {
     private void setVariable() {
         binding.BackBtn.setOnClickListener(v -> requireActivity().onBackPressed());
 
-        binding.method1.setOnClickListener(v -> updatePaymentMethodSelection(
-                binding.method1, binding.methodIc1, binding.method1Title1, binding.methodsubtitle1,
-                binding.method2, binding.methodIc2, binding.method2Title2, binding.methodsubtitle2
-        ));
+        binding.method1.setOnClickListener(v -> {
+            selectMethod1();
+        });
 
-        binding.method2.setOnClickListener(v -> updatePaymentMethodSelection(
-                binding.method2, binding.methodIc2, binding.method2Title2, binding.methodsubtitle2,
-                binding.method1, binding.methodIc1, binding.method1Title1, binding.methodsubtitle1
-        ));
+        binding.method2.setOnClickListener(v -> {
+            selectMethod2();
+        });
+
+        // Inisialisasi metode yang dipilih secara default, jika perlu
+        selectMethod1(); // Atau `selectMethod2()` jika Anda ingin memulai dengan metode lain yang dipilih
     }
 
-    private void updatePaymentMethodSelection(View selectedMethod, View selectedIcon, View selectedTitle, View selectedSubtitle,
-                                              View otherMethod, View otherIcon, View otherTitle, View otherSubtitle) {
-        selectedMethod.setBackgroundResource(R.drawable.custom_btn_blue);
-        selectedIcon.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white)));
-        selectedTitle.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white)));
-        selectedSubtitle.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white)));
-
-        otherMethod.setBackgroundResource(R.drawable.grey_background);
-        otherIcon.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)));
-        otherTitle.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)));
-        otherSubtitle.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black)));
+    private void selectMethod1() {
+        updateMethod1Selected();
+        updateMethod2Unselected();
     }
+
+    private void selectMethod2() {
+        updateMethod1Unselected();
+        updateMethod2Selected();
+    }
+
+    private void updateMethod1Selected() {
+        binding.method1.setBackgroundResource(R.drawable.custom_btn_blue);
+        binding.methodIc1.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))); // Ikon menjadi putih
+        binding.method1Title1.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Ubah warna teks menjadi putih
+        binding.methodsubtitle1.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Ubah warna teks menjadi putih
+    }
+
+    private void updateMethod1Unselected() {
+        binding.method1.setBackgroundResource(R.drawable.grey_background);
+        binding.methodIc1.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))); // Ikon menjadi hitam
+        binding.method1Title1.setTextColor(ContextCompat.getColor(requireContext(), R.color.black)); // Ubah warna teks menjadi hitam
+        binding.methodsubtitle1.setTextColor(ContextCompat.getColor(requireContext(), R.color.black)); // Ubah warna teks menjadi hitam
+    }
+
+    private void updateMethod2Selected() {
+        binding.method2.setBackgroundResource(R.drawable.custom_btn_blue);
+        binding.methodIc2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))); // Ikon menjadi putih
+        binding.method2Title2.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Ubah warna teks menjadi putih
+        binding.methodsubtitle2.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Ubah warna teks menjadi putih
+    }
+
+    private void updateMethod2Unselected() {
+        binding.method2.setBackgroundResource(R.drawable.grey_background);
+        binding.methodIc2.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))); // Ikon menjadi hitam
+        binding.method2Title2.setTextColor(ContextCompat.getColor(requireContext(), R.color.black)); // Ubah warna teks menjadi hitam
+        binding.methodsubtitle2.setTextColor(ContextCompat.getColor(requireContext(), R.color.black)); // Ubah warna teks menjadi hitam
+    }
+
+
+
 
     private void calculateCart() {
         double percentTax = 0.02;
