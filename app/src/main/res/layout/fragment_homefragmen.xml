@@ -7,7 +7,6 @@
     android:background="@color/white"
     tools:context=".menu_dalam.HomeFragment">
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,18 +51,32 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/btnnotifikasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/bell_icon" />
 
                 <ImageView
-                    android:id="@+id/imageView11"
+                    android:id="@+id/btnsearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/search_icon" />
             </LinearLayout>
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="1dp"
+                android:hint="Cari..."
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/custom_edtext"
+                android:textStyle="normal"
+                android:paddingStart="12dp"
+                android:visibility="gone" /> <!-- Sembunyikan secara default -->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -109,7 +122,6 @@
                     app:layout_constraintVertical_bias="0.571"
                     app:selectedDotColor="@color/custom_blue"
                     tools:visibility="visible" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -165,6 +177,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -174,7 +187,6 @@
                 android:orientation="horizontal">
 
                 <TextView
-
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -184,7 +196,6 @@
                     android:text="@string/recomendation" />
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/custom_blue"
@@ -219,7 +230,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

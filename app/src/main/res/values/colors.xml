@@ -5,10 +5,11 @@
     <color name="lavender">#8692F7</color>
     <color name="purple_500">#6200EE</color>
     <color name="purple_700">#3700B3</color>
-    <color name="teal_200">#03DAC5</color>
-    <color name="teal_700">#018786</color>
+    <color name="teal_200">#9DD3CE</color>
+    <color name="teal_700">#8FD1D7</color>
     <color name="custom_blue">#03346E</color>
     <color name="grey">#E9E9E9</color>
+
 
 
     <color name="home">#1194AA</color>
