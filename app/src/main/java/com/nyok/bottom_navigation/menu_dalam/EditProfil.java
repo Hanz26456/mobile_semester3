@@ -1,4 +1,4 @@
-package com.nyok.bottom_navigation;
+package com.nyok.bottom_navigation.menu_dalam;
 
 import android.Manifest;
 import android.content.Context;
@@ -8,24 +8,17 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nyok.bottom_navigation.database.DatabaseHelperLogin;
 import com.nyok.bottom_navigation.databinding.ActivityEditProfilBinding;
-import com.nyok.bottom_navigation.login.Login;
 
 public class EditProfil extends AppCompatActivity {
 

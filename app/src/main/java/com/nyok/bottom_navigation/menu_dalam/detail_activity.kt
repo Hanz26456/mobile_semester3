@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.project1762.Helper.ManagmentCart
 import com.nyok.bottom_navigation.R
 import com.nyok.bottom_navigation.adapter.PicAdapter
@@ -38,8 +37,6 @@ class detail_activity : AppCompatActivity() {
         // Menampilkan gambar utama dari drawableId
         Glide.with(this)
             .load(item.drawableId)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(true)
             .into(binding.img)
 
         // Mengatur tampilan teks untuk informasi item

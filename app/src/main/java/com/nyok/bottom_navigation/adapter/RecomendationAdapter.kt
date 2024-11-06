@@ -6,15 +6,12 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.nyok.bottom_navigation.R
 import com.nyok.bottom_navigation.databinding.ViewHolderrecomendationBinding
 import com.nyok.bottom_navigation.menu_dalam.detail_activity
 import com.nyok.bottom_navigation.model.ItemsModel
 
 class RecomendationAdapter(private var items: MutableList<ItemsModel>) : RecyclerView.Adapter<RecomendationAdapter.Viewholder>() {
-
-    private var allItems: List<ItemsModel> = items.toList() // Menyimpan semua item
 
     class Viewholder(val binding: ViewHolderrecomendationBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -35,11 +32,9 @@ class RecomendationAdapter(private var items: MutableList<ItemsModel>) : Recycle
             if (item.drawableId != 0) {
                 Glide.with(holder.itemView.context)
                     .load(item.drawableId)
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                    .skipMemoryCache(true)
                     .into(pic)
             } else {
-                pic.setImageResource(R.drawable.cat2_1) // Gambar placeholder
+                pic.setImageResource(R.drawable.cat2_1) // Gambar placeholder jika drawableId tidak valid
             }
 
             root.setOnClickListener {
@@ -53,19 +48,6 @@ class RecomendationAdapter(private var items: MutableList<ItemsModel>) : Recycle
     }
 
     override fun getItemCount(): Int = items.size
-
-    fun filter(query: String) {
-        val filteredList = if (query.isEmpty()) {
-            allItems // Kembalikan semua item jika tidak ada query
-        } else {
-            allItems.filter { item ->
-                item.title.lowercase().contains(query.lowercase()) // Saring berdasarkan judul
-            }
-        }
-        items.clear()
-        items.addAll(filteredList)
-        notifyDataSetChanged() // Memperbarui tampilan RecyclerView
-    }
 
     // Tambahkan metode ini untuk mendapatkan daftar items
     fun getItems(): MutableList<ItemsModel> {
