@@ -5,34 +5,32 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.nyok.bottom_navigation.R;
 
 public class Splashscreen extends AppCompatActivity {
-    TextView appname;
-    LottieAnimationView lottie;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Mengatur tampilan edge-to-edge secara manual
+        Window window = getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         setContentView(R.layout.activity_splashscreen);
 
-        appname = findViewById(R.id.appname);
-        lottie = findViewById(R.id.lottie);
-
-        appname.animate().translationY(-1400).setDuration(2700).setStartDelay(0);
-        lottie.animate().translationX(2000).setDuration(2000).setStartDelay(2900);
-
-        new Handler().postDelayed(new Runnable() {
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(getApplicationContext(), Landing1.class);
-                startActivity(i);
+                Intent intent = new Intent(Splashscreen.this, Landing1.class);
+                startActivity(intent);
+                finish();
             }
-        },5000);
+        }, 3000);
     }
 }

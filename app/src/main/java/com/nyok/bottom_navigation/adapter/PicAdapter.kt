@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.nyok.bottom_navigation.R
 import com.nyok.bottom_navigation.databinding.ViewHolderpicBinding
 
@@ -30,8 +29,6 @@ class PicAdapter(
         // Memuat gambar dari drawable ID
         Glide.with(holder.binding.pic.context)
             .load(item)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(true)
             .placeholder(R.drawable.cat2_1)
             .error(R.drawable.cat2_1)
             .into(holder.binding.pic)
