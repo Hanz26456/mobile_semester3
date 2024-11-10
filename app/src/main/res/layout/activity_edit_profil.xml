@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfil">
+    tools:context=".menu_dalam.EditProfil">
 
     <!-- Profile Picture -->
     <com.google.android.material.imageview.ShapeableImageView
@@ -40,93 +40,87 @@
         app:layout_constraintEnd_toEndOf="@+id/image_profil" />
 
     <!-- Username Field -->
-
-    <!-- Email Field -->
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@android:drawable/editbox_background_normal"
         android:hint="Username"
         android:padding="16dp"
-        android:text="Lonnie Murphy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:drawable/editbox_background_normal"
         app:layout_constraintTop_toBottomOf="@id/image_profil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- Email Field -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background_normal"
         android:hint="Email"
         android:padding="16dp"
-        android:text="lonnie.murphy@gmail.com"
         android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:drawable/editbox_background_normal"
         app:layout_constraintTop_toBottomOf="@id/etUsername"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_marginTop="16dp" />
 
     <!-- Phone Field -->
     <EditText
         android:id="@+id/etPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background_normal"
         android:hint="Phone"
         android:padding="16dp"
-        android:text="(269)-748-9882"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:drawable/editbox_background_normal"
         app:layout_constraintTop_toBottomOf="@id/etEmail"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_marginTop="16dp" />
 
     <!-- Gender Field -->
     <EditText
         android:id="@+id/etGender"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:background="@android:drawable/editbox_background_normal"
         android:hint="Gender"
         android:padding="16dp"
-        android:text="Male"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:drawable/editbox_background_normal"
         app:layout_constraintTop_toBottomOf="@id/etPhone"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_marginTop="16dp" />
 
     <!-- Date of Birth Field -->
     <EditText
         android:id="@+id/etDOB"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background_normal"
         android:hint="Date of Birth"
         android:padding="16dp"
-        android:text="10/4/1977"
         android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:drawable/editbox_background_normal"
         app:layout_constraintTop_toBottomOf="@id/etGender"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8"
+        android:layout_marginTop="16dp" />
 
     <!-- Save Button -->
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="SAVE"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etDOB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDOB" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
