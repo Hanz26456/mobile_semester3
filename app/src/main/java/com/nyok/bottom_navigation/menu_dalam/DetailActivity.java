@@ -37,25 +37,25 @@ public class DetailActivity extends AppCompatActivity {
             int drawableResourceId = this.getResources().getIdentifier(object.getPicUrl(), "drawable", this.getPackageName());
             Glide.with(this)
                     .load(drawableResourceId)
-                    .into(binding.itempic);
+                    .into(binding.img);
 
-            binding.tittleTxt.setText(object.getTitle());
-            binding.priceTxt.setText("$" + object.getPrice());
+            binding.titleTxt.setText(object.getTitle());
+            binding.PriceTxt.setText("$" + object.getPrice());
             binding.descriptionTxt.setText(object.getDescription());
-            binding.reviewTxt.setText(object.getReview() + "");
-            binding.RatingTxt.setText(object.getScore() + "");
+            binding.textView16.setText(object.getReview() + "");
+            binding.ratingTxt.setText(object.getScore() + "");
 
-            binding.addtocartbtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    object.setNumberInCart(numberOrder);
-                    managmentCart.insertFood(object);
-                }
-            });
+//            binding.addTocartBtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    object.setNumberInCart(numberOrder);
+//                    managmentCart.insertFood(object);
+//                }
+//            });
         } else {
             Log.e("DetailActivity", "Object is null");
             Toast.makeText(this, "Data tidak ditemukan", Toast.LENGTH_SHORT).show();
         }
-        binding.btnback.setOnClickListener(v -> finish());
+        binding.backbtn.setOnClickListener(v -> finish());
     }
 }

@@ -20,7 +20,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.nyok.bottom_navigation.database.DatabaseHelperLogin;
 import com.nyok.bottom_navigation.databinding.ActivityEditProfilBinding;
 
-public class EditProfil extends AppCompatActivity {
+public class    EditProfil extends AppCompatActivity {
 
     private ActivityEditProfilBinding binding;
     private DatabaseHelperLogin db;

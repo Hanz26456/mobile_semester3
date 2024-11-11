@@ -33,6 +33,15 @@
             android:name=".menu_dalam.EditProfil"
             android:exported="false" />
         <activity
+            android:name=".login.Landing1"
+            android:exported="false" />
+        <activity
+            android:name=".login.Landing2"
+            android:exported="false" />
+        <activity
+            android:name=".login.Landing3"
+            android:exported="false" />
+        <activity
             android:name=".menu_dalam.inputanbarang"
             android:exported="false" />
         <activity
